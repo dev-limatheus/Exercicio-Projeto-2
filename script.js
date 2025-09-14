@@ -2,7 +2,7 @@ const form = document.getElementById('formContato');
 const contatos = [];
 const numeros = [];
 
- linhas=' ';
+let linhas='';
 
 form.addEventListener('submit', function(e){
     e.preventDefault();
