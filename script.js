@@ -1,83 +1,37 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+const form = document.getElementById('formContato');
+const contatos = [];
+const numeros = [];
+
+let linhas='';
+
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    adicionaLinha();
+    atualizaTabela();
+
+});
+
+function adicionaLinha() {
+    const inputNomeContato = document.getElementById('nome-contato');
+    const inputNumero = document.getElementById('numero-contato');
+    {
+
+    contatos.push(inputNomeContato.value);
+    numeros.push(parseFloat(inputNumero.value));
+
+    let linha = '<tr>';
+    linha += `<td>${inputNomeContato.value}</td>`;
+    linha += `<td>${inputNumero.value}</td>`;
+    linha += '</tr>';
+
+    linhas += linha;
+    }
+    inputNomeContato.value='';
+    inputNumero.value='';
 }
 
-body{
-    background-color: #6666665e;
-    padding-top: 100px;
-}
-
-header{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 640px;
-    margin: auto;
-    margin-bottom: 30px;
-    
-}
-
-header img{
-    height: 36px;
-    margin-right: 16px;
-    margin-left: 16px;
-}
-
-
-header h1 {
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    font-size: 50px;
-}
-
-.container{
-    max-width: 960px;
-    width: 100%;
-    margin: 0 auto;
-    background-color: rgba(220, 224, 224, 0.534);
-    border: 2px solid black;
-    border-radius: 15px;
-}
-
-form{
-    display: flex;
-    max-width: 640px;
-    width: 100%;
-    justify-content:space-between;
-    margin: 0 auto;
-}
-
-form input{
-    font-size: 20px;
-    margin: 10px;
-}
-
-form button{
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: rgb(28, 165, 28);
-    color: white;
-    margin: 10px;
-}
-
-table{
-    width: 100%;
-}
-
-table th{
-    border-bottom: 2px solid #000;
-    padding: 16px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-table td{
-    padding: 16px 0;
-    text-align: center;
-    font-size: 18px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+function atualizaTabela(){
+    const corpoTabela = document.querySelector('tbody');
+    corpoTabela.innerHTML= linhas;  
 }
